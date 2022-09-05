@@ -32,7 +32,7 @@ public class CursoController {
 	public ResponseEntity<Response<Boolean>> cadastrarCurso(@Valid @RequestBody CursoModel cursoModel) {
 		Response<Boolean> response = new Response<>();
 		response.setData(this.cursoService.cadastrar(cursoModel));
-		response.setStatusCode(HttpStatus.OK.value());
+		response.setStatusCode(HttpStatus.CREATED.value());
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
