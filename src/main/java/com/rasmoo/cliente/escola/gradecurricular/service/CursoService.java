@@ -46,7 +46,7 @@ public class CursoService implements ICursoService {
 		List<MateriaEntity> listaMateria = new ArrayList<>();
 
 		if (buscarId.isEmpty()) {
-			return Boolean.FALSE;
+			 throw new CursoException(CURSO_NAO_ENCONTRADO, HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
 
