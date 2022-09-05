@@ -41,15 +41,12 @@ public class CursoService implements ICursoService {
 	@Override
 	public Boolean atualizar(CursoModel cursoModel) {
 		CursoEntity cursoEntity = new CursoEntity();
-		Optional<CursoEntity> buscarId = cursoRepository.findById(cursoModel.getId());
-
+		Optional<CursoEntity> buscar = cursoRepository.findById(cursoModel.getId());
 		List<MateriaEntity> listaMateria = new ArrayList<>();
-
-		if (buscarId.isEmpty()) {
-			 throw new CursoException(CURSO_NAO_ENCONTRADO, HttpStatus.INTERNAL_SERVER_ERROR);
-
+		
+		if (buscar.isEmpty()) {
+		 throw new CursoException(CURSO_NAO_ENCONTRADO, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-
 		List<Long> lista = cursoModel.getMaterias();
 		lista.forEach(materiaId -> {
 			MateriaEntity materiaEntity = materiaRepository.findById(materiaId).get();
